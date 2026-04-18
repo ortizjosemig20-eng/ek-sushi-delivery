@@ -170,6 +170,12 @@
                    background-position: center; 
                    background-repeat: no-repeat;">
             <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-lg-8 col-12">
+                        <input type="text" id="searchMenu" class="form-control form-control-lg text-dark" placeholder="🔍 Buscar en el menú (ej. EK Sushi, Combo, Roll)..." style="border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                    </div>
+                </div>
+
                 <div class="row">
 
                     <div class="col-lg-6 col-12 mb-4 mb-lg-0">
@@ -1494,7 +1500,7 @@
 
                             <div class="menu-block mb-4">
                                 <div class="d-flex">
-                                    <h6 class="item-name text-white">Coca Cola de 1 Litro</h6>
+                                    <h6 class="item-name text-white">Bebidas de 1 Litro</h6>
                                     <span class="underline"></span>
                                     <strong class="ms-auto item-price text-white">$2.00</strong>
                                 </div>
@@ -1503,45 +1509,9 @@
 
                             <div class="menu-block mb-4">
                                 <div class="d-flex">
-                                    <h6 class="item-name text-white">Naranja de 1 Litro</h6>
+                                    <h6 class="item-name text-white">Bebidas de 1.5 Litros</h6>
                                     <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$2.00</strong>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
-                            </div>
-                            
-                            <div class="menu-block mb-4">
-                                <div class="d-flex">
-                                    <h6 class="item-name text-white">Frescolita de 1 Litro</h6>
-                                    <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$2.00</strong>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex">
-                                    <h6 class="item-name text-white">Uva de 1 Litro</h6>
-                                    <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$2.00</strong>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex">
-                                    <h6 class="item-name text-white">Toronja de 1 Litro</h6>
-                                    <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$2.00</strong>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex">
-                                    <h6 class="item-name text-white">Chinoto de 1 Litro</h6>
-                                    <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$2.00</strong>
+                                    <strong class="ms-auto item-price text-white">$3.00</strong>
                                 </div>
                                 <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
                             </div>
@@ -2028,6 +1998,41 @@
                 { name: "Queso Crema", price: 1.00 }
             ];
 
+            // Lógica de buscador para el MENÚ
+            const searchMenuInput = document.getElementById('searchMenu');
+            if(searchMenuInput) {
+                searchMenuInput.addEventListener('input', function() {
+                    let filter = this.value.toLowerCase();
+                    let categoryWraps = document.querySelectorAll('.menu-block-wrap');
+
+                    categoryWraps.forEach(wrap => {
+                        let blocks = wrap.querySelectorAll('.menu-block');
+                        let hasVisibleBlocks = false;
+
+                        blocks.forEach(block => {
+                            let itemNameEl = block.querySelector('.item-name');
+                            let itemDescEl = block.querySelector('.item-desc');
+                            
+                            let itemNameText = itemNameEl ? itemNameEl.textContent.toLowerCase() : '';
+                            let itemDescText = itemDescEl ? itemDescEl.textContent.toLowerCase() : '';
+
+                            if(itemNameText.includes(filter) || itemDescText.includes(filter)) {
+                                block.style.setProperty('display', 'block', 'important');
+                                hasVisibleBlocks = true;
+                            } else {
+                                block.style.setProperty('display', 'none', 'important');
+                            }
+                        });
+
+                        if(hasVisibleBlocks) {
+                            wrap.style.display = 'block';
+                        } else {
+                            wrap.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
             const originalDestinoSelect = document.getElementById('destino').cloneNode(true);
             document.getElementById('searchDestino').addEventListener('input', function() {
                 let filter = this.value.toLowerCase();
@@ -2127,12 +2132,24 @@
                 extrasBox.innerHTML = ''; 
                 flavorBox.innerHTML = '';
 
+                // Logica actualizada para bebidas de 1L y 1.5L
                 let isNestea = itemData.originalName.toLowerCase().includes("nestea");
                 let isJugo = itemData.originalName.toLowerCase().includes("jugos naturales");
+                let isRefresco1L = itemData.originalName.toLowerCase().includes("bebidas de 1 litro");
+                let isRefresco15L = itemData.originalName.toLowerCase().includes("bebidas de 1.5 litros");
 
-                if (isNestea || isJugo) {
+                if (isNestea || isJugo || isRefresco1L || isRefresco15L) {
                     document.getElementById('flavorSection').style.display = 'block';
-                    let flavors = isNestea ? ['Durazno', 'Limón'] : ['Fresa', 'Parchita', 'Durazno'];
+                    
+                    let flavors = [];
+                    if (isNestea) {
+                        flavors = ['Durazno', 'Limón'];
+                    } else if (isJugo) {
+                        flavors = ['Fresa', 'Parchita', 'Durazno'];
+                    } else if (isRefresco1L || isRefresco15L) {
+                        flavors = ['Coca Cola', 'Naranja', 'Chinoto', 'Uva', 'Frescolita', 'Toronja'];
+                    }
+
                     let html = '';
                     flavors.forEach((f, i) => {
                         let isChecked = (editIdx !== -1 && itemData.flavor === f) || (editIdx === -1 && i === 0);
