@@ -2,7 +2,7 @@
 // 1. PEGA AQUÍ TUS CREDENCIALES DE JSONBIN
 // ==========================================
 const BIN_ID = '69e3efdc36566621a8c9bc32'; 
-const API_KEY = '$2a$10$fpHD/CRu.6MqvuM36eR3COktFRrwYA7GnD4UH2R.DU6LiApA34oh.';
+const API_KEY = 'AQUI_PEGAS_EL_CODIGO_SUPER_LARGO_QUE_EMPIEZA_CON_$2a$';
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 promoDay: currentPromoDay,
                 promoImg: currentPromoImg
             },
-            menu: obtenerEstadoDelMenu() // Guardamos todos los productos actualizados
+            menu: obtenerEstadoDelMenu()
         };
 
         try {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if(respuesta.ok) {
                 alert("¡Éxito! Todos los cambios se han guardado en la nube y son visibles para tus clientes.");
             } else {
-                alert("Hubo un error conectando con la base de datos (JSONBin).");
+                alert("Hubo un error conectando con la base de datos (JSONBin). La imagen podría seguir siendo muy pesada.");
             }
         } catch (error) {
             alert("Error de conexión. Intenta de nuevo.");
@@ -245,12 +245,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(descEl) descEl.textContent = newDesc;
                 
                 populateAdminProducts(); 
-                
-                // GUARDAR EN LA NUBE Inmediatamente
                 guardarEnLaNube();
             }
         }
     });
+
+    // Función para COMPRIMIR la imagen antes de subirla
+    function comprimirImagen(file, callback) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(event) {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 500; // Reducimos el ancho para que no pese casi nada
+                const scaleSize = MAX_WIDTH / img.width;
+                canvas.width = MAX_WIDTH;
+                canvas.height = img.height * scaleSize;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                // Comprimimos a JPEG con calidad al 70%
+                const base64Comprimido = canvas.toDataURL('image/jpeg', 0.7);
+                callback(base64Comprimido);
+            }
+        }
+    }
 
     // Guardar PROMO desde el admin
     document.getElementById('saveAdminPromoBtn').addEventListener('click', function() {
@@ -263,12 +285,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let dayNameStr = dayNames[currentPromoDay];
 
         if (fileInput && fileInput.files && fileInput.files[0]) {
-            let reader = new FileReader();
-            reader.onload = function(e) {
-                currentPromoImg = e.target.result; 
+            // Usamos el compresor mágico para evitar el error de JSONBin
+            comprimirImagen(fileInput.files[0], function(imagenComprimida) {
+                currentPromoImg = imagenComprimida; 
                 actualizarDOMPromocionYGuardar(dayNameStr);
-            }
-            reader.readAsDataURL(fileInput.files[0]);
+            });
         } else {
             actualizarDOMPromocionYGuardar(dayNameStr);
         }
@@ -281,8 +302,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dynamicPromoNote').textContent = `(Nuestras promociones solo están disponibles los días ${dayName} de 12:00 AM a 11:00 PM)`;
             document.getElementById('promoAlertDayText').textContent = dayName;
 
-            // GUARDAR EN LA NUBE
             guardarEnLaNube();
+            let adminModalEl = document.getElementById('adminPromoModal');
+            let adminModal = bootstrap.Modal.getInstance(adminModalEl);
+            adminModal.hide();
         }
     });
 
@@ -528,7 +551,6 @@ document.addEventListener('DOMContentLoaded', function() {
         bsModal.show();
     }
 
-    // Aquí capturamos clics en agregar al carrito, sea estático o generado
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('add-to-cart-btn')) {
             e.preventDefault();
@@ -802,7 +824,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let telefono = document.getElementById('phone').value.trim();
 
         if (nombre.toLowerCase() === 'jesus' && telefono === '2004272010') {
-            isAdminUnlocked = true; // Activar panel
+            isAdminUnlocked = true; 
             populateAdminProducts(); 
             let adminModal = new bootstrap.Modal(document.getElementById('adminPromoModal'));
             adminModal.show();
