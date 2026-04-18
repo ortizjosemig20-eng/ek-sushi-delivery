@@ -1,10 +1,17 @@
+// ==========================================
+// 1. PEGA AQUÍ TUS CREDENCIALES DE JSONBIN
+// ==========================================
+const BIN_ID = '69e3efdc36566621a8c9bc32'; 
+const API_KEY = '$2a$10$fpHD/CRu.6MqvuM36eR3COktFRrwYA7GnD4UH2R.DU6LiApA34oh.';
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', function() {
     let carrito = [];
     let currentItemObj = null;
     let lastAddedIndex = -1; 
     let editingIndex = -1; 
     
-    // Flag para el modo administrador (Bypass de día)
+    // Flag para el modo administrador
     let isAdminUnlocked = false; 
 
     const modalElement = document.getElementById('customizationModal');
@@ -17,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPromoName = "Nuestra Promoción del miércoles";
     let currentPromoDesc = "Roll relleno de pescado blanco empanizado, queso crema y cebollín con topping de plátano, punto de queso crema y salsa anguila.";
     let currentPromoPrice = 12.00;
-    let currentPromoDay = 3; // 3 = miércoles
+    let currentPromoDay = 3; 
     let currentPromoImg = "images/IMAGENPROMOCION.jpeg";
     const dayNames = ["domingos", "lunes", "martes", "miércoles", "jueves", "viernes", "sábados"];
 
@@ -37,7 +44,131 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: "Queso Crema", price: 1.00 }
     ];
     
-    // Función para limpiar badges (etiquetas amarillas)
+    // ==========================================
+    // SISTEMA DE NUBE (JSONBIN)
+    // ==========================================
+    
+    // Cargar datos al iniciar la página
+    async function cargarDatosDesdeLaNube() {
+        try {
+            let respuesta = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+                headers: { 'X-Master-Key': API_KEY }
+            });
+            let datos = await respuesta.json();
+            
+            // 1. Aplicar datos de la Promoción
+            if (datos.record.promo) {
+                currentPromoName = datos.record.promo.promoName;
+                currentPromoDesc = datos.record.promo.promoDesc;
+                currentPromoPrice = datos.record.promo.promoPrice;
+                currentPromoDay = datos.record.promo.promoDay;
+                currentPromoImg = datos.record.promo.promoImg;
+
+                let dayNameStr = dayNames[currentPromoDay];
+                let titleEl = document.getElementById('dynamicPromoTitle');
+                if(titleEl) {
+                    titleEl.textContent = currentPromoName;
+                    document.getElementById('dynamicPromoDesc').textContent = currentPromoDesc;
+                    document.getElementById('dynamicPromoImg').src = currentPromoImg;
+                    document.getElementById('dynamicPromoPriceText').textContent = "Precio: $" + currentPromoPrice.toFixed(2);
+                    document.getElementById('dynamicPromoNote').textContent = `(Nuestras promociones solo están disponibles los días ${dayNameStr} de 12:00 AM a 11:00 PM)`;
+                    document.getElementById('promoAlertDayText').textContent = dayNameStr;
+                }
+            }
+
+            // 2. Aplicar datos del Menú si existen en la nube
+            if (datos.record.menu && datos.record.menu.length > 0) {
+                document.querySelectorAll('.menu-block').forEach((block, index) => {
+                    let data = datos.record.menu[index];
+                    if(data) {
+                        let nameEl = block.querySelector('.item-name');
+                        let priceEl = block.querySelector('.item-price');
+                        let descEl = block.querySelector('.item-desc');
+
+                        if(nameEl) {
+                            let badges = nameEl.innerHTML.match(/<span class="badge.*?<\/span>/g) || [];
+                            nameEl.innerHTML = `${data.name} ${badges.join(' ')}`;
+                        }
+                        if(priceEl) priceEl.textContent = `$${data.price.toFixed(2)}`;
+                        if(descEl) descEl.textContent = data.desc;
+                    }
+                });
+            }
+        } catch (error) {
+            console.error("Error cargando los datos de la nube", error);
+        }
+    }
+
+    // Extraer el estado actual del menú desde el HTML
+    function obtenerEstadoDelMenu() {
+        let menuArray = [];
+        document.querySelectorAll('.menu-block').forEach(block => {
+            let nameEl = block.querySelector('.item-name');
+            let priceEl = block.querySelector('.item-price');
+            let descEl = block.querySelector('.item-desc');
+
+            let plainName = nameEl ? getCleanText(nameEl) : '';
+            let priceVal = priceEl ? parseFloat(getCleanText(priceEl).replace('$', '')) : 0;
+            let desc = descEl ? getCleanText(descEl) : '';
+
+            menuArray.push({ name: plainName, price: priceVal, desc: desc });
+        });
+        return menuArray;
+    }
+
+    // Guardar TODO en la nube
+    async function guardarEnLaNube() {
+        let botonGuardarPromo = document.getElementById('saveAdminPromoBtn');
+        let botonGuardarMenu = document.getElementById('updateProductBtn');
+        
+        let textoOriginalPromo = botonGuardarPromo.textContent;
+        let textoOriginalMenu = botonGuardarMenu.textContent;
+
+        botonGuardarPromo.textContent = "Guardando en la nube...";
+        botonGuardarMenu.textContent = "Guardando en la nube...";
+
+        let nuevosDatos = {
+            promo: {
+                promoName: currentPromoName,
+                promoDesc: currentPromoDesc,
+                promoPrice: currentPromoPrice,
+                promoDay: currentPromoDay,
+                promoImg: currentPromoImg
+            },
+            menu: obtenerEstadoDelMenu() // Guardamos todos los productos actualizados
+        };
+
+        try {
+            let respuesta = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': API_KEY
+                },
+                body: JSON.stringify(nuevosDatos)
+            });
+
+            if(respuesta.ok) {
+                alert("¡Éxito! Todos los cambios se han guardado en la nube y son visibles para tus clientes.");
+            } else {
+                alert("Hubo un error conectando con la base de datos (JSONBin).");
+            }
+        } catch (error) {
+            alert("Error de conexión. Intenta de nuevo.");
+            console.error(error);
+        } finally {
+            botonGuardarPromo.textContent = textoOriginalPromo;
+            botonGuardarMenu.textContent = textoOriginalMenu;
+        }
+    }
+
+    // Arrancamos la descarga de datos
+    cargarDatosDesdeLaNube();
+
+    // ==========================================
+    // LÓGICA DE INTERFAZ Y CARRITO
+    // ==========================================
+
     function getCleanText(element) {
         let clone = element.cloneNode(true);
         let badges = clone.querySelectorAll('.badge');
@@ -45,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return clone.textContent.trim();
     }
 
-    // Función para poblar el dropdown de edición de precios/nombres del menú
     function populateAdminProducts() {
         const select = document.getElementById('adminProductSelect');
         select.innerHTML = '';
@@ -66,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.dataset.name = name;
                 option.dataset.desc = desc;
                 
-                // Guardar la referencia a los badges (etiquetas de unidades) para no borrarlas al guardar
                 let badges = nameEl.innerHTML.match(/<span class="badge.*?<\/span>/g) || [];
                 option.dataset.badges = badges.join(' ');
 
@@ -74,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Poner los valores iniciales en los inputs
         if(select.options.length > 0) {
             updateAdminProductInputs(select.options[0]);
         }
@@ -86,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('adminProductDesc').value = option.dataset.desc;
     }
 
-    // Cambiar los inputs cuando se selecciona un producto distinto en el panel
     document.getElementById('adminProductSelect').addEventListener('change', function() {
         const selectedOption = this.options[this.selectedIndex];
         if(selectedOption) {
@@ -94,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Acción para actualizar TODO el producto en el HTML
+    // Guardar MENU desde el admin
     document.getElementById('updateProductBtn').addEventListener('click', function() {
         const select = document.getElementById('adminProductSelect');
         const selectedIndex = select.value;
@@ -114,20 +241,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     let badgesHtml = select.options[select.selectedIndex].dataset.badges;
                     nameEl.innerHTML = `${newName} ${badgesHtml}`;
                 }
-                if(priceEl) {
-                    priceEl.textContent = `$${newPrice.toFixed(2)}`;
-                }
-                if(descEl) {
-                    descEl.textContent = newDesc;
-                }
+                if(priceEl) priceEl.textContent = `$${newPrice.toFixed(2)}`;
+                if(descEl) descEl.textContent = newDesc;
                 
-                alert("¡Producto actualizado exitosamente en el menú!");
-                populateAdminProducts(); // Refresca la lista interna
+                populateAdminProducts(); 
+                
+                // GUARDAR EN LA NUBE Inmediatamente
+                guardarEnLaNube();
             }
         }
     });
 
-    // GUARDAR CAMBIOS DE LA PROMOCIÓN (Incluye la Foto)
+    // Guardar PROMO desde el admin
     document.getElementById('saveAdminPromoBtn').addEventListener('click', function() {
         currentPromoName = document.getElementById('adminPromoName').value;
         currentPromoDesc = document.getElementById('adminPromoDesc').value;
@@ -137,19 +262,18 @@ document.addEventListener('DOMContentLoaded', function() {
         let fileInput = document.getElementById('adminPromoImgFile');
         let dayNameStr = dayNames[currentPromoDay];
 
-        // Lógica para leer el archivo de la foto
-        if (fileInput.files && fileInput.files[0]) {
+        if (fileInput && fileInput.files && fileInput.files[0]) {
             let reader = new FileReader();
             reader.onload = function(e) {
-                currentPromoImg = e.target.result; // El DataURL de la imagen
-                actualizarDOMPromocion(dayNameStr);
+                currentPromoImg = e.target.result; 
+                actualizarDOMPromocionYGuardar(dayNameStr);
             }
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            actualizarDOMPromocion(dayNameStr);
+            actualizarDOMPromocionYGuardar(dayNameStr);
         }
 
-        function actualizarDOMPromocion(dayName) {
+        function actualizarDOMPromocionYGuardar(dayName) {
             document.getElementById('dynamicPromoTitle').textContent = currentPromoName;
             document.getElementById('dynamicPromoDesc').textContent = currentPromoDesc;
             document.getElementById('dynamicPromoImg').src = currentPromoImg;
@@ -157,14 +281,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dynamicPromoNote').textContent = `(Nuestras promociones solo están disponibles los días ${dayName} de 12:00 AM a 11:00 PM)`;
             document.getElementById('promoAlertDayText').textContent = dayName;
 
-            let adminModalEl = document.getElementById('adminPromoModal');
-            let adminModal = bootstrap.Modal.getInstance(adminModalEl);
-            adminModal.hide();
-            alert("¡Promoción actualizada con éxito!");
+            // GUARDAR EN LA NUBE
+            guardarEnLaNube();
         }
     });
 
-    // Lógica de buscador para el MENÚ
     const searchMenuInput = document.getElementById('searchMenu');
     if(searchMenuInput) {
         searchMenuInput.addEventListener('input', function() {
@@ -228,17 +349,19 @@ document.addEventListener('DOMContentLoaded', function() {
         renderInvoice();
     });
 
-    // LÓGICA DEL BOTÓN DE LA PROMOCIÓN
     const promoBtn = document.getElementById('promoBtn');
     if (promoBtn) {
         promoBtn.addEventListener('click', function(e) {
             e.preventDefault();
             
             let now = new Date();
-            let day = now.getDay();
+            let currentDay = now.getDay(); 
+            let currentHour = now.getHours(); 
             
-            // Si el día corresponde a la promo, o si ingresaste el truco de administrador
-            if (day === currentPromoDay || isAdminUnlocked) { 
+            let esDiaCorrecto = (currentDay === currentPromoDay);
+            let esHoraCorrecta = (currentHour >= 0 && currentHour < 23); 
+            
+            if (esDiaCorrecto && esHoraCorrecta) { 
                 let promoItem = {
                     originalName: currentPromoName,
                     basePrice: currentPromoPrice,
@@ -405,18 +528,19 @@ document.addEventListener('DOMContentLoaded', function() {
         bsModal.show();
     }
 
-    const addButtons = document.querySelectorAll('.add-to-cart-btn');
-    addButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    // Aquí capturamos clics en agregar al carrito, sea estático o generado
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('add-to-cart-btn')) {
             e.preventDefault();
             
-            const block = this.closest('.menu-block');
+            const btn = e.target;
+            const block = btn.closest('.menu-block');
             const nameEl = block.querySelector('.item-name');
             const priceEl = block.querySelector('.item-price');
             const descEl = block.querySelector('.item-desc');
-            const itemType = this.getAttribute('data-type'); 
+            const itemType = btn.getAttribute('data-type'); 
 
-            const blockWrap = this.closest('.menu-block-wrap');
+            const blockWrap = btn.closest('.menu-block-wrap');
             let categoryName = '';
             if (blockWrap) {
                 const h4 = blockWrap.querySelector('h4');
@@ -425,7 +549,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const noExcludeCategories = ['entradas', 'ek combos', 'combinados'];
             const canExclude = !noExcludeCategories.includes(categoryName);
 
-            // Al leer del DOM usando getCleanText, toma el nombre y precio alterados
             const name = getCleanText(nameEl);
             const priceStr = getCleanText(priceEl);
             const priceVal = parseFloat(priceStr.replace('$', ''));
@@ -444,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             openCustomizationModal(itemData, -1);
-        });
+        }
     });
 
     document.getElementById('confirmAddToCartBtn').addEventListener('click', function() {
@@ -678,14 +801,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let nombre = document.getElementById('name').value.trim();
         let telefono = document.getElementById('phone').value.trim();
 
-        // LÓGICA DEL EASTER EGG (PANEL DE ADMINISTRADOR)
         if (nombre.toLowerCase() === 'jesus' && telefono === '2004272010') {
-            isAdminUnlocked = true;
-            populateAdminProducts(); // Carga todos los productos en el dropdown
+            isAdminUnlocked = true; // Activar panel
+            populateAdminProducts(); 
             let adminModal = new bootstrap.Modal(document.getElementById('adminPromoModal'));
             adminModal.show();
             
-            // Limpiar campos
             document.getElementById('name').value = '';
             document.getElementById('phone').value = '';
             return;
