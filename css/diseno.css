@@ -1,0 +1,36 @@
+/* Quita el cuadro negro inclinado por defecto en la plantilla */
+.hero-section .container { background: transparent !important; }
+.hero-section .container::after, .hero-section .container::before { display: none !important; }
+
+/* Forzar color blanco en los enlaces del menú superior */
+.navbar .nav-link { color: #ffffff !important; font-weight: 600; }
+.navbar .nav-link:hover { color: #f8b42c !important; }
+
+/* Estilo rojo oscuro (vino tinto) uniforme para las tarjetas del menú */
+.menu-block {
+    background-color: #6e0000 !important; /* Rojo vino tinto más oscuro */
+    border: none; /* Sin borde de otro color para que se vea uniforme */
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.menu-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    background-color: #7a0000 !important; /* Solo un toquecito más claro al pasar el mouse */
+}
+
+/* Estilos para la lista de ingredientes del modal */
+.ingredient-item, .extra-item { cursor: pointer; transition: 0.2s; }
+.ingredient-item:hover, .extra-item:hover { background-color: #e9ecef; }
+
+/* Estilos para la factura */
+.invoice-item { border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-bottom: 10px; }
+.invoice-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+/* Fix AGRESIVO para poner el modal por encima del navbar de la plantilla */
+.modal { z-index: 9999999 !important; }
+.modal-backdrop { z-index: 9999998 !important; }
+/* Forzamos al navbar a irse hacia atrás cuando se abra el modal */
+body.modal-open .navbar { z-index: 10 !important; }

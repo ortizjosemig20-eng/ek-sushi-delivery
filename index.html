@@ -15,45 +15,7 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/vegas.min.css" rel="stylesheet">
     <link href="css/tooplate-barista.css" rel="stylesheet">
-
-    <style>
-        /* Quita el cuadro negro inclinado por defecto en la plantilla */
-        .hero-section .container { background: transparent !important; }
-        .hero-section .container::after, .hero-section .container::before { display: none !important; }
-        
-        /* Forzar color blanco en los enlaces del menú superior */
-        .navbar .nav-link { color: #ffffff !important; font-weight: 600; }
-        .navbar .nav-link:hover { color: #f8b42c !important; }
-
-        /* Estilo rojo oscuro (vino tinto) uniforme para las tarjetas del menú */
-        .menu-block {
-            background-color: #6e0000 !important; /* Rojo vino tinto más oscuro */
-            border: none; /* Sin borde de otro color para que se vea uniforme */
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
-        .menu-block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            background-color: #7a0000 !important; /* Solo un toquecito más claro al pasar el mouse */
-        }
-
-        /* Estilos para la lista de ingredientes del modal */
-        .ingredient-item, .extra-item { cursor: pointer; transition: 0.2s; }
-        .ingredient-item:hover, .extra-item:hover { background-color: #e9ecef; }
-        
-        /* Estilos para la factura */
-        .invoice-item { border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-bottom: 10px; }
-        .invoice-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-        /* Fix AGRESIVO para poner el modal por encima del navbar de la plantilla */
-        .modal { z-index: 9999999 !important; }
-        .modal-backdrop { z-index: 9999998 !important; }
-        /* Forzamos al navbar a irse hacia atrás cuando se abra el modal */
-        body.modal-open .navbar { z-index: 10 !important; }
-    </style>
+    <link href="css/diseno.css" rel="stylesheet">
 </head>
 
 <body>
@@ -62,7 +24,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="images/LogoSushi.png" width="200" height="100">
+                    <img src="images/LogoSushi.png" width="200" height="100" alt="Logo EK Sushi">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,78 +54,75 @@
             </div>
         </nav>
 
-<section class="hero-section d-flex justify-content-center align-items-center" id="section_1" 
-    style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/fondoEntrada.jpeg'); 
-           background-size: cover; 
-           background-position: center; 
-           background-repeat: no-repeat; 
-           min-height: 100vh;">
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1" 
+            style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/fondoEntrada.jpeg'); 
+                   background-size: cover; 
+                   background-position: center; 
+                   background-repeat: no-repeat; 
+                   min-height: 100vh;">
 
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-7 col-12 mx-auto text-center"> <em class="text-white" style="font-size: 28px;">Sushi a Domicilio</em>
-                <h1 class="text-white">Bienvenido a EK sushi</h1>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-12 mx-auto text-center"> <em class="text-white" style="font-size: 28px;">Sushi a Domicilio</em>
+                        <h1 class="text-white">Bienvenido a EK sushi</h1>
 
-                <p class="text-white mb-4 pb-lg-2">
-                 El <em>sushi más delicioso</em>, un sabor único.
-                </p>
+                        <p class="text-white mb-4 pb-lg-2">
+                         El <em>sushi más delicioso</em>, un sabor único.
+                        </p>
 
-                <div class="d-flex justify-content-center"> <a class="btn custom-btn custom-border-btn smoothscroll me-3" href="#section_2">
-                        Conoce nuestras promociones 
-                    </a>
+                        <div class="d-flex justify-content-center"> <a class="btn custom-btn custom-border-btn smoothscroll me-3" href="#section_2">
+                                Conoce nuestras promociones 
+                            </a>
 
-                    <a class="btn custom-btn smoothscroll" href="#section_3"><strong>Ver Menú</strong></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div style="margin-top:-1px;overflow:hidden;line-height:0;">
-    <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
-        <path d="M0,80 C480,0 960,160 1440,80 L1440,0 L0,0 Z" fill="#680000"></path>
-    </svg>
-</div>
-        
-            
-<section class="about-section section-padding" id="section_2" style="background-color: #062C1F;">
-    <div class="section-overlay"></div>
-    <div class="container">
-        <div class="row align-items-center">
-
-            <div class="col-lg-5 col-12 mx-auto">
-                <div class="position-relative" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"> 
-                    
-                    <img src="images/IMAGENPROMOCION.jpeg" class="img-fluid w-100" alt="Promoción EK Sushi" style="display: block;">
-
-                    <div class="d-flex flex-column position-absolute p-3 w-100" style="bottom: 10px; left: 0;">
-                        <h4 class="mt-auto text-white m-0" style="font-size: 1.1rem; line-height: 1.3;"></h4>
-                        <h4 class="text-white m-0" style="font-size: 1.1rem; line-height: 1.3;"></h4>
+                            <a class="btn custom-btn smoothscroll" href="#section_3"><strong>Ver Menú</strong></a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
-                <em class="text-white">Ek sushi</em>
-                <h2 class="text-white mb-3">Nuestra Promoción del miércoles</h2>
-                <p class="text-white">(Nuestras promociones solo están disponibles los días miércoles de 12:00 AM a 11:00 PM)</p>
-                <p class="text-white mb-4">Roll relleno de pescado blanco empanizado, queso crema y cebollín con topping de plátano, punto de queso crema y salsa anguila.</p>
-                
-                <a href="#" id="promoBtn" class="btn custom-btn custom-border-btn mt-3 mb-4">Ordenar</a>
-            </div>
+        <div style="margin-top:-1px;overflow:hidden;line-height:0;">
+            <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
+                <path d="M0,80 C480,0 960,160 1440,80 L1440,0 L0,0 Z" fill="#680000"></path>
+            </svg>
         </div>
-    </div>
-</section>
-
                 
+        <section class="about-section section-padding" id="section_2" style="background-color: #062C1F;">
+            <div class="section-overlay"></div>
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-5 col-12 mx-auto">
+                        <div class="position-relative" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"> 
+                            
+                            <img src="images/IMAGENPROMOCION.jpeg" id="dynamicPromoImg" class="img-fluid w-100" alt="Promoción EK Sushi" style="display: block;">
+
+                            <div class="d-flex flex-column position-absolute p-3 w-100" style="bottom: 10px; left: 0;">
+                                <h4 class="mt-auto text-white m-0" style="font-size: 1.1rem; line-height: 1.3;"></h4>
+                                <h4 class="text-white m-0" style="font-size: 1.1rem; line-height: 1.3;"></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
+                        <em class="text-white">Ek sushi</em>
+                        <h2 class="text-white mb-3" id="dynamicPromoTitle">Nuestra Promoción del miércoles</h2>
+                        <p class="text-white" id="dynamicPromoNote">(Nuestras promociones solo están disponibles los días miércoles de 12:00 AM a 11:00 PM)</p>
+                        <p class="text-white mb-3" id="dynamicPromoDesc">Roll relleno de pescado blanco empanizado, queso crema y cebollín con topping de plátano, punto de queso crema y salsa anguila.</p>
+                        <p class="text-warning fs-5 fw-bold" id="dynamicPromoPriceText">Precio: $12.00</p>
+                        
+                        <a href="#" id="promoBtn" class="btn custom-btn custom-border-btn mt-2 mb-4">Ordenar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div style="margin-top:-1px;overflow:hidden;line-height:0;">
           <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
             <path d="M0,80 C480,0 960,160 1440,80 L1440,0 L0,0 Z" fill="#680000"></path>
           </svg>
         </div>
        
-
-        
         <section class="menu-section section-padding" id="section_3" 
             style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/FondoMenu.jpg'); 
                    background-size: cover; 
@@ -213,7 +172,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Croquetas de Cangrejo <span class="badge ms-3 text-bg-warning">Favorita</span></h6>
+                                            <h6 class="item-name text-white mb-0">Croquetas de Cangrejo <span class="badge ms-3 text-bg-warning">5 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$5.00</strong>
                                         </div>
@@ -273,7 +232,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Tataki de Atún</h6>
+                                            <h6 class="item-name text-white mb-0">Tataki de Atún <span class="badge ms-3 text-bg-warning">8 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$12.00</strong>
                                         </div>
@@ -293,7 +252,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Langostino Tempura</h6>
+                                            <h6 class="item-name text-white mb-0">Langostino Tempura <span class="badge ms-3 text-bg-warning">10 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$10.00</strong>
                                         </div>
@@ -333,7 +292,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Gyozas</h6>
+                                            <h6 class="item-name text-white mb-0">Gyozas <span class="badge ms-3 text-bg-warning">5 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$7.00</strong>
                                         </div>
@@ -413,7 +372,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Hitokuchi</h6>
+                                            <h6 class="item-name text-white mb-0">Hitokuchi <span class="badge ms-3 text-bg-warning">3 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$6.00</strong>
                                         </div>
@@ -473,7 +432,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Gunka</h6>
+                                            <h6 class="item-name text-white mb-0">Gunka <span class="badge ms-3 text-bg-warning">3 Unidades</span></h6>
                                             <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
                                             <strong class="item-price text-white">$10.00</strong>
                                         </div>
@@ -902,6 +861,7 @@
                         </div>
 
                     </div>
+                    
                     <div class="col-lg-6 col-12">
                         
                         <div class="menu-block-wrap mb-5">
@@ -1173,133 +1133,6 @@
 
                         <div class="menu-block-wrap mb-5">
                             <div class="text-center mb-4 pb-lg-2">
-                                <em class="text-white">Para Compartir</em>
-                                <h4 class="text-white">Combinados</h4>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/43.png" alt="Combinado 1" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 1 <span class="badge ms-3 text-bg-warning">9 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$11.00</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Crispy Roll, 1/2 Fuji Roll.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/44.png" alt="Combinado 2" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 2 <span class="badge ms-3 text-bg-warning">10 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$8.50</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Chicken Tempura, 1/2 White Fish.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/45.png" alt="Combinado 3" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 3 <span class="badge ms-3 text-bg-warning">10 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$11.00</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Crazy Roll, 1/2 Crispy Roll.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/46.png" alt="Combinado 4" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 4 <span class="badge ms-3 text-bg-warning">9 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$9.00</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Fuji Roll, 1/2 White Fish.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/47.png" alt="Combinado 5" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 5 <span class="badge ms-3 text-bg-warning">10 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$10.00</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Chicken Tempura, 1/2 Crispy Roll.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="me-3">
-                                        <img src="images/imagenes del menu dk sushi/48.png" alt="Combinado 6" style="width: 100px; height: auto; object-fit: contain; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="item-name text-white mb-0">Combinado 6 <span class="badge ms-3 text-bg-warning">9 Piezas</span></h6>
-                                            <span class="underline flex-grow-1 mx-2" style="border-bottom: 1px dotted rgba(255,255,255,0.3);"></span>
-                                            <strong class="item-price text-white">$9.00</strong>
-                                        </div>
-                                        <div class="border-top border-light mt-2 pt-2" style="opacity: 0.4;"></div>
-                                        <div>
-                                            <small class="item-desc text-white">1/2 Avocado Roll, 1/2 Fuji Roll.</small>
-                                        </div>
-                                        <a href="#" class="btn btn-sm btn-outline-light mt-3 add-to-cart-btn" data-type="food">Añadir al carrito</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-block-wrap mb-5">
-                            <div class="text-center mb-4 pb-lg-2">
                                 <em class="text-white">Para los consentidos</em>
                                 <h4 class="text-white">Menú Kids</h4>
                             </div>
@@ -1518,18 +1351,9 @@
 
                             <div class="menu-block mb-4">
                                 <div class="d-flex">
-                                    <h6 class="item-name text-white">Nestea de Durazno y Limón (Con tapa)</h6>
+                                    <h6 class="item-name text-white">Nestea de Durazno y Limón (Para llevar)</h6>
                                     <span class="underline"></span>
                                     <strong class="ms-auto item-price text-white">$2.00</strong>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
-                            </div>
-
-                            <div class="menu-block mb-4">
-                                <div class="d-flex">
-                                    <h6 class="item-name text-white">Nestea de Durazno y Limón (Sin tapa)</h6>
-                                    <span class="underline"></span>
-                                    <strong class="ms-auto item-price text-white">$1.50</strong>
                                 </div>
                                 <a href="#" class="btn btn-sm btn-outline-light mt-2 add-to-cart-btn" data-type="drink">Añadir al carrito</a>
                             </div>
@@ -1563,312 +1387,311 @@
 
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
 
-       
        <div style="margin-top:-1px;overflow:hidden;line-height:0;">
           <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
              <path d="M0,80 C480,0 960,160 1440,80 L1440,0 L0,0 Z" fill="#680000"></path>
           </svg>
        </div>
 
-<section class="contact-section section-padding" id="section_5" 
-    style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/fondoPedidos.jpg'); 
-           background-size: cover; 
-           background-position: center; 
-           background-repeat: no-repeat;">
-    <div class="container">
-        <div class="row">
+        <section class="contact-section section-padding" id="section_5" 
+            style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/fondoPedidos.jpg'); 
+                   background-size: cover; 
+                   background-position: center; 
+                   background-repeat: no-repeat;">
+            <div class="container">
+                <div class="row">
 
-            <div class="col-lg-12 col-12">
-                <em class="text-white">Realiza tu Pedido a Domicilio</em>
-                <h2 class="text-white mb-4 pb-lg-2">Pedir Ahora y Recibir en Casa</h2>
-            </div>
+                    <div class="col-lg-12 col-12">
+                        <em class="text-white">Realiza tu Pedido a Domicilio</em>
+                        <h2 class="text-white mb-4 pb-lg-2">Pedir Ahora y Recibir en Casa</h2>
+                    </div>
 
-            <div class="col-lg-6 col-12">
-                <h4 class="text-white mb-3">Información del Cliente</h4>
-                <form action="#" method="post" class="custom-form contact-form" role="form" id="pedidoForm">
-                    <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <label for="name" class="form-label text-white">Nombre Completo <sup class="text-danger">*</sup></label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Juan Pérez" required>
+                    <div class="col-lg-6 col-12">
+                        <h4 class="text-white mb-3">Información del Cliente</h4>
+                        <form action="#" method="post" class="custom-form contact-form" role="form" id="pedidoForm">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <label for="name" class="form-label text-white">Nombre Completo <sup class="text-danger">*</sup></label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Juan Pérez" required>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <label for="phone" class="form-label text-white">Teléfono <sup class="text-danger">*</sup></label>
+                                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="0414-999 999" required>
+                                </div>
+                                
+                                <div class="col-lg-12 col-12 mt-3">
+                                    <label for="metodoPago" class="form-label text-white">Método de Pago <sup class="text-danger">*</sup></label>
+                                    <select class="form-select" id="metodoPago" name="metodoPago" required>
+                                        <option value="" selected disabled>Selecciona el método de pago...</option>
+                                        <option value="Pago Móvil">Pago Móvil</option>
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Punto de Venta">Punto de Venta</option>
+                                        <option value="Divisas">Divisas</option>
+                                        <option value="Binance">Binance</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <label for="sugerenciasPedido" class="form-label text-white">Sugerencias o Notas del Pedido <span class="text-muted">(Opcional)</span></label>
+                                    <textarea name="sugerenciasPedido" id="sugerenciasPedido" class="form-control" rows="2" placeholder="Ej: Por favor agregar más servilletas, sin palillos, etc."></textarea>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <h5 class="text-white border-bottom pb-2">Tu Factura / Carrito</h5>
+                                    <div id="invoiceArea" class="bg-light p-3 rounded text-dark mb-3" style="min-height: 120px;">
+                                        <p class="text-muted text-center my-3" id="emptyCartMsg">Aún no has agregado productos a tu carrito.</p>
+                                        <ul id="invoiceList" class="list-unstyled mb-2"></ul>
+                                        
+                                        <div id="invoiceFooter" style="display: none;" class="d-flex flex-column border-top border-secondary pt-2 mt-2">
+                                            <div class="d-flex justify-content-between fs-6 text-muted mb-1" id="deliveryRow" style="display:none !important;">
+                                                <span>Delivery:</span>
+                                                <span id="deliveryCost">$0.00</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between fw-bold fs-5">
+                                                <span>Total a Pagar:</span>
+                                                <span id="invoiceTotal" class="text-success">$0.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="detalle_pedido" id="detallePedidoInput">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+                        <h4 class="text-white mb-3">Zona de Entrega</h4>
+                        <div class="mb-2">
+                            <input type="text" id="searchDestino" class="form-control" placeholder="🔍 Buscar zona (ej. Curagua)...">
                         </div>
-                        <div class="col-lg-6 col-12">
-                            <label for="phone" class="form-label text-white">Teléfono <sup class="text-danger">*</sup></label>
-                            <input type="tel" name="phone" id="phone" class="form-control" placeholder="0414-999 999" required>
-                        </div>
-                        
-                        <div class="col-lg-12 col-12 mt-3">
-                            <label for="metodoPago" class="form-label text-white">Método de Pago <sup class="text-danger">*</sup></label>
-                            <select class="form-select" id="metodoPago" name="metodoPago" required>
-                                <option value="" selected disabled>Selecciona el método de pago...</option>
-                                <option value="Pago Móvil">Pago Móvil</option>
-                                <option value="Efectivo">Efectivo</option>
-                                <option value="Punto de Venta">Punto de Venta</option>
-                                <option value="Divisas">Divisas</option>
-                                <option value="Binance">Binance</option>
+                        <div class="mb-3">
+                            <select class="form-select" id="destino" aria-label="Destino del pedido" form="pedidoForm" required>
+                                <option value="" selected disabled>Selecciona tu zona...</option>
+                                <option value="0">Buscar en el restaurante (Sin delivery) - $0.00</option>
+                                <optgroup label="Tarifa: $1.50">
+                                    <option value="1.5">Terrazas del Atlántico - $1.50</option>
+                                    <option value="1.5">Tiamo Country - $1.50</option>
+                                    <option value="1.5">Villa Guayana - $1.50</option>
+                                    <option value="1.5">Villa Tocoma - $1.50</option>
+                                    <option value="1.5">Isla Dorada - $1.50</option>
+                                    <option value="1.5">Isla Coral - $1.50</option>
+                                    <option value="1.5">Isla Bonita (Sector Tiamo) - $1.50</option>
+                                    <option value="1.5">Las Palmeras - $1.50</option>
+                                    <option value="1.5">Terrazas del Roraima - $1.50</option>
+                                    <option value="1.5">Yara Yara - $1.50</option>
+                                    <option value="1.5">Las Peonias - $1.50</option>
+                                    <option value="1.5">Las Orquideas - $1.50</option>
+                                    <option value="1.5">Villa Atenas - $1.50</option>
+                                </optgroup>
+                                <optgroup label="Tarifa: $2.00">
+                                    <option value="2">Las Garzas - $2.00</option>
+                                    <option value="2">Rio Sipapo - $2.00</option>
+                                    <option value="2">Lomas del Caroni - $2.00</option>
+                                    <option value="2">Barrio Guayana - $2.00</option>
+                                    <option value="2">Villa del Valle I y II - $2.00</option>
+                                    <option value="2">Urb. Guayana (Rotary) - $2.00</option>
+                                    <option value="2">Curagua - $2.00</option>
+                                    <option value="2">Unare III - $2.00</option>
+                                    <option value="2">El Guamo - $2.00</option>
+                                    <option value="2">El Caimito - $2.00</option>
+                                    <option value="2">Villa Yennishia - $2.00</option>
+                                    <option value="2">Riberas del Caroni - $2.00</option>
+                                    <option value="2">Resd. Camino Real (Villa Betania) - $2.00</option>
+                                    <option value="2">Villa Betania - $2.00</option>
+                                    <option value="2">Monte Carmelo - $2.00</option>
+                                    <option value="2">Loma Linda - $2.00</option>
+                                    <option value="2">Paratepuy - $2.00</option>
+                                </optgroup>
+                                <optgroup label="Tarifa: $2.50">
+                                    <option value="2.5">Rio Aro - $2.50</option>
+                                    <option value="2.5">Rio Yocoima - $2.50</option>
+                                    <option value="2.5">Los Bucares - $2.50</option>
+                                    <option value="2.5">Ventuari - $2.50</option>
+                                    <option value="2.5">Rio Negro - $2.50</option>
+                                    <option value="2.5">Terrazas del Caroni - $2.50</option>
+                                    <option value="2.5">Terrazas del Aluminio - $2.50</option>
+                                    <option value="2.5">Altos del Caroni - $2.50</option>
+                                    <option value="2.5">Unare I - $2.50</option>
+                                    <option value="2.5">Unare II - $2.50</option>
+                                    <option value="2.5">Villa Aurora - $2.50</option>
+                                    <option value="2.5">Colinas de Unare - $2.50</option>
+                                    <option value="2.5">Cumbres de Venezuela (Entrada) - $2.50</option>
+                                    <option value="2.5">Villa Roberto (Entrada) - $2.50</option>
+                                </optgroup>
+                                <optgroup label="Tarifa: $3.00">
+                                    <option value="3">Villa Upata - $3.00</option>
+                                    <option value="3">El Llanito - $3.00</option>
+                                    <option value="3">Santa Rosa (Entrada) - $3.00</option>
+                                    <option value="3">Villa Bahia (Entrada) - $3.00</option>
+                                    <option value="3">Zona Ind. Los Pinos - $3.00</option>
+                                    <option value="3">Los Samanes - $3.00</option>
+                                    <option value="3">Villa Verde - $3.00</option>
+                                    <option value="3">Resd. Braga Park - $3.00</option>
+                                    <option value="3">Valeria Suite - $3.00</option>
+                                    <option value="3">Villa Orinokia - $3.00</option>
+                                    <option value="3">Resd. Habitania - $3.00</option>
+                                    <option value="3">Alta Vista Norte - $3.00</option>
+                                    <option value="3">Edificio Traki - $3.00</option>
+                                    <option value="3">Hotel Eurobuilding - $3.00</option>
+                                    <option value="3">Los Raudales - $3.00</option>
+                                    <option value="3">Ciudad Jardin - $3.00</option>
+                                    <option value="3">Resd. Kamoiran - $3.00</option>
+                                    <option value="3">Conj. Resd. La Llovizna - $3.00</option>
+                                    <option value="3">Resd. Las Americas - $3.00</option>
+                                    <option value="3">Resd. Gran Palms - $3.00</option>
+                                    <option value="3">Resd. Auyantepuy - $3.00</option>
+                                    <option value="3">Resd. Churun Meru - $3.00</option>
+                                    <option value="3">Resd. Angostura - $3.00</option>
+                                    <option value="3">Torre Latina - $3.00</option>
+                                    <option value="3">Torre Movistar - $3.00</option>
+                                    <option value="3">CVG Alta Vista - $3.00</option>
+                                    <option value="3">Arivana - $3.00</option>
+                                    <option value="3">Las Querencias - $3.00</option>
+                                    <option value="3">Los Saltos - $3.00</option>
+                                    <option value="3">Villa Africana - $3.00</option>
+                                    <option value="3">Villa Asia - $3.00</option>
+                                    <option value="3">Los Mangos - $3.00</option>
+                                    <option value="3">Los Olivos - $3.00</option>
+                                    <option value="3">Villa Latina - $3.00</option>
+                                    <option value="3">La Churuata - $3.00</option>
+                                    <option value="3">Resd. Karuay - $3.00</option>
+                                    <option value="3">Karimamparu - $3.00</option>
+                                    <option value="3">Kamarata - $3.00</option>
+                                    <option value="3">Entre Ríos - $3.00</option>
+                                    <option value="3">Florida Suites - $3.00</option>
+                                    <option value="3">Florida Country - $3.00</option>
+                                    <option value="3">Florida Gardens - $3.00</option>
+                                    <option value="3">Guayana Country Club - $3.00</option>
+                                    <option value="3">Villa Universitaria - $3.00</option>
+                                </optgroup>
+                                <optgroup label="Tarifa: $4.00">
+                                    <option value="4">Core 8 - $4.00</option>
+                                    <option value="4">Urb. Gran Sabana - $4.00</option>
+                                    <option value="4">Villa Aponwao - $4.00</option>
+                                    <option value="4">Toro Muerto - $4.00</option>
+                                    <option value="4">Mini Fincas - $4.00</option>
+                                    <option value="4">Chilemex - $4.00</option>
+                                    <option value="4">Villa Alianza - $4.00</option>
+                                    <option value="4">Villa Brasil - $4.00</option>
+                                    <option value="4">Villa Granada - $4.00</option>
+                                    <option value="4">Villa Antillana - $4.00</option>
+                                    <option value="4">La Corniza - $4.00</option>
+                                    <option value="4">El Trebol - $4.00</option>
+                                    <option value="4">Campo A1 - $4.00</option>
+                                    <option value="4">Campo A2 - $4.00</option>
+                                    <option value="4">Campo B - $4.00</option>
+                                    <option value="4">Villa Central - $4.00</option>
+                                    <option value="4">Los Peregrinos - $4.00</option>
+                                    <option value="4">Villa Bolivia - $4.00</option>
+                                    <option value="4">Vía Club Italo - $4.00</option>
+                                    <option value="4">Vía Club Portugues - $4.00</option>
+                                </optgroup>
+                                <optgroup label="Tarifa: $5.00">
+                                    <option value="5">Zona Ind. Matanzas - $5.00</option>
+                                    <option value="5">Las Teodokildas - $5.00</option>
+                                    <option value="5">Villa Jade (Entrada) - $5.00</option>
+                                    <option value="5">Villa Celestial - $5.00</option>
+                                    <option value="5">Las Amazonas (Entrada) - $5.00</option>
+                                    <option value="5">UD 338 (Entrada) - $5.00</option>
+                                    <option value="5">Castillito - $5.00</option>
+                                    <option value="5">Urb. Mendoza - $5.00</option>
+                                    <option value="5">Resd. Maria Luisa - $5.00</option>
+                                    <option value="5">Hospital Ferrominera - $5.00</option>
+                                    <option value="5">Campo C - $5.00</option>
+                                    <option value="5">Club Caronoco - $5.00</option>
+                                    <option value="5">Hospital Militar - $5.00</option>
+                                </optgroup>
                             </select>
                         </div>
 
-                        <div class="col-12 mt-3">
-                            <label for="sugerenciasPedido" class="form-label text-white">Sugerencias o Notas del Pedido <span class="text-muted">(Opcional)</span></label>
-                            <textarea name="sugerenciasPedido" id="sugerenciasPedido" class="form-control" rows="2" placeholder="Ej: Por favor agregar más servilletas, sin palillos, etc."></textarea>
-                        </div>
+                        <button type="submit" class="btn custom-btn custom-border-btn mt-3 w-100" id="realizarPedidoBtn" form="pedidoForm">
+                            Confirmar y Enviar Pedido
+                        </button>
 
-                        <div class="col-12 mt-4">
-                            <h5 class="text-white border-bottom pb-2">Tu Factura / Carrito</h5>
-                            <div id="invoiceArea" class="bg-light p-3 rounded text-dark mb-3" style="min-height: 120px;">
-                                <p class="text-muted text-center my-3" id="emptyCartMsg">Aún no has agregado productos a tu carrito.</p>
-                                <ul id="invoiceList" class="list-unstyled mb-2"></ul>
-                                
-                                <div id="invoiceFooter" style="display: none;" class="d-flex flex-column border-top border-secondary pt-2 mt-2">
-                                    <div class="d-flex justify-content-between fs-6 text-muted mb-1" id="deliveryRow" style="display:none !important;">
-                                        <span>Delivery:</span>
-                                        <span id="deliveryCost">$0.00</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between fw-bold fs-5">
-                                        <span>Total a Pagar:</span>
-                                        <span id="invoiceTotal" class="text-success">$0.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <input type="hidden" name="detalle_pedido" id="detallePedidoInput">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+                        <em class="text-white d-block mb-3 fs-4 fw-bold">EK Sushi</em>
+                        <p class="text-white">Tu destino para el sushi más delicioso y entregas rápidas.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+                        <em class="text-white d-block mb-3 fs-5 fw-bold">Navegación Rápida</em>
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#section_1" class="site-footer-link">Inicio</a>
+                            </li>
+                            <li class="site-footer-link-item">
+                                <a href="#section_3" class="site-footer-link">Menú</a>
+                            </li>
+                            <li class="site-footer-link-item">
+                                <a href="#section_5" class="site-footer-link">Pedido & Contacto</a>
+                            </li>
+                            <li class="site-footer-link-item">
+                                <a href="#section_2" class="site-footer-link">Promociones</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+                        <em class="text-white d-block mb-3 fs-5 fw-bold">Horario de Atención</em>
+                        <p class="text-white mb-1">Lunes a Viernes: 11:00 AM - 10:00 PM</p>
+                        <p class="text-white mb-1">Sábados y Domingos: 12:00 PM - 11:00 PM</p>
+                        <p class="text-white mt-3">
+                            <i class="bi-clock me-2"></i>
+                            Siempre listos para tu pedido!
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-12">
+                        <em class="text-white d-block mb-3 fs-5 fw-bold">Síguenos</em>
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-facebook"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram"></a>
+                            </li>
+                        </ul>
+                        <strong class="text-white mt-4 d-block">
+                            <i class="bi-geo-alt me-2"></i>
+                            Av. Principal, Venezuela
+                        </strong>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="site-footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 text-center text-lg-start">
+                            <p class="copyright-text">Copyright © 2026 EK Sushi. Todos los derechos reservados.</p>
+                        </div>
+                        <div class="col-lg-4 col-12 text-center text-lg-end">
+                            <p class="copyright-text">Diseñado por <a href="#" target="_blank" class="text-white">JO.</a></p>
                         </div>
                     </div>
-                </form>
-            </div>
-
-            <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                <h4 class="text-white mb-3">Zona de Entrega</h4>
-                <div class="mb-2">
-                    <input type="text" id="searchDestino" class="form-control" placeholder="🔍 Buscar zona (ej. Curagua)...">
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" id="destino" aria-label="Destino del pedido" form="pedidoForm" required>
-                        <option value="" selected disabled>Selecciona tu zona...</option>
-                        <option value="0">Buscar en el restaurante (Sin delivery) - $0.00</option>
-                        <optgroup label="Tarifa: $1.50">
-                            <option value="1.5">Terrazas del Atlántico - $1.50</option>
-                            <option value="1.5">Tiamo Country - $1.50</option>
-                            <option value="1.5">Villa Guayana - $1.50</option>
-                            <option value="1.5">Villa Tocoma - $1.50</option>
-                            <option value="1.5">Isla Dorada - $1.50</option>
-                            <option value="1.5">Isla Coral - $1.50</option>
-                            <option value="1.5">Isla Bonita (Sector Tiamo) - $1.50</option>
-                            <option value="1.5">Las Palmeras - $1.50</option>
-                            <option value="1.5">Terrazas del Roraima - $1.50</option>
-                            <option value="1.5">Yara Yara - $1.50</option>
-                            <option value="1.5">Las Peonias - $1.50</option>
-                            <option value="1.5">Las Orquideas - $1.50</option>
-                            <option value="1.5">Villa Atenas - $1.50</option>
-                        </optgroup>
-                        <optgroup label="Tarifa: $2.00">
-                            <option value="2">Las Garzas - $2.00</option>
-                            <option value="2">Rio Sipapo - $2.00</option>
-                            <option value="2">Lomas del Caroni - $2.00</option>
-                            <option value="2">Barrio Guayana - $2.00</option>
-                            <option value="2">Villa del Valle I y II - $2.00</option>
-                            <option value="2">Urb. Guayana (Rotary) - $2.00</option>
-                            <option value="2">Curagua - $2.00</option>
-                            <option value="2">Unare III - $2.00</option>
-                            <option value="2">El Guamo - $2.00</option>
-                            <option value="2">El Caimito - $2.00</option>
-                            <option value="2">Villa Yennishia - $2.00</option>
-                            <option value="2">Riberas del Caroni - $2.00</option>
-                            <option value="2">Resd. Camino Real (Villa Betania) - $2.00</option>
-                            <option value="2">Villa Betania - $2.00</option>
-                            <option value="2">Monte Carmelo - $2.00</option>
-                            <option value="2">Loma Linda - $2.00</option>
-                            <option value="2">Paratepuy - $2.00</option>
-                        </optgroup>
-                        <optgroup label="Tarifa: $2.50">
-                            <option value="2.5">Rio Aro - $2.50</option>
-                            <option value="2.5">Rio Yocoima - $2.50</option>
-                            <option value="2.5">Los Bucares - $2.50</option>
-                            <option value="2.5">Ventuari - $2.50</option>
-                            <option value="2.5">Rio Negro - $2.50</option>
-                            <option value="2.5">Terrazas del Caroni - $2.50</option>
-                            <option value="2.5">Terrazas del Aluminio - $2.50</option>
-                            <option value="2.5">Altos del Caroni - $2.50</option>
-                            <option value="2.5">Unare I - $2.50</option>
-                            <option value="2.5">Unare II - $2.50</option>
-                            <option value="2.5">Villa Aurora - $2.50</option>
-                            <option value="2.5">Colinas de Unare - $2.50</option>
-                            <option value="2.5">Cumbres de Venezuela (Entrada) - $2.50</option>
-                            <option value="2.5">Villa Roberto (Entrada) - $2.50</option>
-                        </optgroup>
-                        <optgroup label="Tarifa: $3.00">
-                            <option value="3">Villa Upata - $3.00</option>
-                            <option value="3">El Llanito - $3.00</option>
-                            <option value="3">Santa Rosa (Entrada) - $3.00</option>
-                            <option value="3">Villa Bahia (Entrada) - $3.00</option>
-                            <option value="3">Zona Ind. Los Pinos - $3.00</option>
-                            <option value="3">Los Samanes - $3.00</option>
-                            <option value="3">Villa Verde - $3.00</option>
-                            <option value="3">Resd. Braga Park - $3.00</option>
-                            <option value="3">Valeria Suite - $3.00</option>
-                            <option value="3">Villa Orinokia - $3.00</option>
-                            <option value="3">Resd. Habitania - $3.00</option>
-                            <option value="3">Alta Vista Norte - $3.00</option>
-                            <option value="3">Edificio Traki - $3.00</option>
-                            <option value="3">Hotel Eurobuilding - $3.00</option>
-                            <option value="3">Los Raudales - $3.00</option>
-                            <option value="3">Ciudad Jardin - $3.00</option>
-                            <option value="3">Resd. Kamoiran - $3.00</option>
-                            <option value="3">Conj. Resd. La Llovizna - $3.00</option>
-                            <option value="3">Resd. Las Americas - $3.00</option>
-                            <option value="3">Resd. Gran Palms - $3.00</option>
-                            <option value="3">Resd. Auyantepuy - $3.00</option>
-                            <option value="3">Resd. Churun Meru - $3.00</option>
-                            <option value="3">Resd. Angostura - $3.00</option>
-                            <option value="3">Torre Latina - $3.00</option>
-                            <option value="3">Torre Movistar - $3.00</option>
-                            <option value="3">CVG Alta Vista - $3.00</option>
-                            <option value="3">Arivana - $3.00</option>
-                            <option value="3">Las Querencias - $3.00</option>
-                            <option value="3">Los Saltos - $3.00</option>
-                            <option value="3">Villa Africana - $3.00</option>
-                            <option value="3">Villa Asia - $3.00</option>
-                            <option value="3">Los Mangos - $3.00</option>
-                            <option value="3">Los Olivos - $3.00</option>
-                            <option value="3">Villa Latina - $3.00</option>
-                            <option value="3">La Churuata - $3.00</option>
-                            <option value="3">Resd. Karuay - $3.00</option>
-                            <option value="3">Karimamparu - $3.00</option>
-                            <option value="3">Kamarata - $3.00</option>
-                            <option value="3">Entre Ríos - $3.00</option>
-                            <option value="3">Florida Suites - $3.00</option>
-                            <option value="3">Florida Country - $3.00</option>
-                            <option value="3">Florida Gardens - $3.00</option>
-                            <option value="3">Guayana Country Club - $3.00</option>
-                            <option value="3">Villa Universitaria - $3.00</option>
-                        </optgroup>
-                        <optgroup label="Tarifa: $4.00">
-                            <option value="4">Core 8 - $4.00</option>
-                            <option value="4">Urb. Gran Sabana - $4.00</option>
-                            <option value="4">Villa Aponwao - $4.00</option>
-                            <option value="4">Toro Muerto - $4.00</option>
-                            <option value="4">Mini Fincas - $4.00</option>
-                            <option value="4">Chilemex - $4.00</option>
-                            <option value="4">Villa Alianza - $4.00</option>
-                            <option value="4">Villa Brasil - $4.00</option>
-                            <option value="4">Villa Granada - $4.00</option>
-                            <option value="4">Villa Antillana - $4.00</option>
-                            <option value="4">La Corniza - $4.00</option>
-                            <option value="4">El Trebol - $4.00</option>
-                            <option value="4">Campo A1 - $4.00</option>
-                            <option value="4">Campo A2 - $4.00</option>
-                            <option value="4">Campo B - $4.00</option>
-                            <option value="4">Villa Central - $4.00</option>
-                            <option value="4">Los Peregrinos - $4.00</option>
-                            <option value="4">Villa Bolivia - $4.00</option>
-                            <option value="4">Vía Club Italo - $4.00</option>
-                            <option value="4">Vía Club Portugues - $4.00</option>
-                        </optgroup>
-                        <optgroup label="Tarifa: $5.00">
-                            <option value="5">Zona Ind. Matanzas - $5.00</option>
-                            <option value="5">Las Teodokildas - $5.00</option>
-                            <option value="5">Villa Jade (Entrada) - $5.00</option>
-                            <option value="5">Villa Celestial - $5.00</option>
-                            <option value="5">Las Amazonas (Entrada) - $5.00</option>
-                            <option value="5">UD 338 (Entrada) - $5.00</option>
-                            <option value="5">Castillito - $5.00</option>
-                            <option value="5">Urb. Mendoza - $5.00</option>
-                            <option value="5">Resd. Maria Luisa - $5.00</option>
-                            <option value="5">Hospital Ferrominera - $5.00</option>
-                            <option value="5">Campo C - $5.00</option>
-                            <option value="5">Club Caronoco - $5.00</option>
-                            <option value="5">Hospital Militar - $5.00</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn custom-btn custom-border-btn mt-3 w-100" id="realizarPedidoBtn" form="pedidoForm">
-                    Confirmar y Enviar Pedido
-                </button>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-3 col-12 mb-4 mb-lg-0">
-                <em class="text-white d-block mb-3 fs-4 fw-bold">EK Sushi</em>
-                <p class="text-white">Tu destino para el sushi más delicioso y entregas rápidas.</p>
-            </div>
-
-            <div class="col-lg-3 col-12 mb-4 mb-lg-0">
-                <em class="text-white d-block mb-3 fs-5 fw-bold">Navegación Rápida</em>
-                <ul class="site-footer-links">
-                    <li class="site-footer-link-item">
-                        <a href="#section_1" class="site-footer-link">Inicio</a>
-                    </li>
-                    <li class="site-footer-link-item">
-                        <a href="#section_3" class="site-footer-link">Menú</a>
-                    </li>
-                    <li class="site-footer-link-item">
-                        <a href="#section_5" class="site-footer-link">Pedido & Contacto</a>
-                    </li>
-                    <li class="site-footer-link-item">
-                        <a href="#section_2" class="site-footer-link">Promociones</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-12 mb-4 mb-lg-0">
-                <em class="text-white d-block mb-3 fs-5 fw-bold">Horario de Atención</em>
-                <p class="text-white mb-1">Lunes a Viernes: 11:00 AM - 10:00 PM</p>
-                <p class="text-white mb-1">Sábados y Domingos: 12:00 PM - 11:00 PM</p>
-                <p class="text-white mt-3">
-                    <i class="bi-clock me-2"></i>
-                    Siempre listos para tu pedido!
-                </p>
-            </div>
-
-            <div class="col-lg-3 col-12">
-                <em class="text-white d-block mb-3 fs-5 fw-bold">Síguenos</em>
-                <ul class="social-icon">
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link bi-facebook"></a>
-                    </li>
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link bi-twitter"></a>
-                    </li>
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link bi-whatsapp"></a>
-                    </li>
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link bi-instagram"></a>
-                    </li>
-                </ul>
-                <strong class="text-white mt-4 d-block">
-                    <i class="bi-geo-alt me-2"></i>
-                    Av. Principal, Venezuela
-                </strong>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="site-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-12 text-center text-lg-start">
-                    <p class="copyright-text">Copyright © 2026 EK Sushi. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-lg-4 col-12 text-center text-lg-end">
-                    <p class="copyright-text">Diseñado por <a href="#" target="_blank" class="text-white">JO.</a></p>
                 </div>
             </div>
-        </div>
-    </div>
-</footer>
+        </footer>
 
     </main>
     
@@ -1953,10 +1776,85 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-dark mb-0">Lo sentimos, nuestras promociones solo son válidas los días <strong>Miércoles</strong> desde las 12:00 AM hasta las 11:00 PM.</p>
+                    <p class="text-dark mb-0">Lo sentimos, nuestras promociones solo son válidas los días <strong id="promoAlertDayText" style="text-transform: capitalize;">miércoles</strong> desde las 12:00 AM hasta las 11:00 PM.</p>
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="adminPromoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-danger border-0">
+                    <h5 class="modal-title">⚙️ Panel de Administrador EK Sushi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold text-warning border-bottom pb-2">⭐ Editar Promoción Activa</h6>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Nombre de la Promoción</label>
+                            <input type="text" id="adminPromoName" class="form-control" value="Nuestra Promoción del miércoles">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Precio ($)</label>
+                            <input type="number" id="adminPromoPrice" class="form-control" value="12.00" step="0.50">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Descripción / Ingredientes</label>
+                        <textarea id="adminPromoDesc" class="form-control" rows="2">Roll relleno de pescado blanco empanizado, queso crema y cebollín con topping de plátano, punto de queso crema y salsa anguila.</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label>Cargar Nueva Imagen de Promoción</label>
+                            <input type="file" id="adminPromoImgFile" class="form-control" accept="image/*">
+                            <small class="text-muted">Deja esto vacío si quieres mantener la imagen actual.</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Día habilitado</label>
+                            <select id="adminPromoDay" class="form-select">
+                                <option value="1">Lunes</option>
+                                <option value="2">Martes</option>
+                                <option value="3" selected>Miércoles</option>
+                                <option value="4">Jueves</option>
+                                <option value="5">Viernes</option>
+                                <option value="6">Sábado</option>
+                                <option value="0">Domingo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold text-warning border-bottom mt-4 pb-2">✏️ Editar Menú Completo (Nombre, Precio y Descripción)</h6>
+                    <div class="row align-items-end">
+                        <div class="col-md-12 mb-3">
+                            <label>Seleccionar Producto</label>
+                            <select id="adminProductSelect" class="form-select">
+                                </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Nuevo Nombre</label>
+                            <input type="text" id="adminProductName" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Nuevo Precio ($)</label>
+                            <input type="number" id="adminProductPrice" class="form-control" step="0.50">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>Nueva Descripción</label>
+                            <textarea id="adminProductDesc" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <button type="button" class="btn btn-warning w-100" id="updateProductBtn">Actualizar Producto Completo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="saveAdminPromoBtn">Guardar Promoción</button>
                 </div>
             </div>
         </div>
@@ -1968,580 +1866,9 @@
     <script src="js/vegas.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/route.js"></script>
+    
+    <script src="js/logica.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let carrito = [];
-            let currentItemObj = null;
-            let lastAddedIndex = -1; 
-            let editingIndex = -1; 
-
-            const modalElement = document.getElementById('customizationModal');
-            const bsModal = new bootstrap.Modal(modalElement);
-
-            const successModalElement = document.getElementById('successModal');
-            const successModal = new bootstrap.Modal(successModalElement);
-
-            const adicionalesList = [
-                { name: "Aguacate", price: 0.30 },
-                { name: "Plátano", price: 0.30 },
-                { name: "Wakame", price: 2.50 },
-                { name: "Salmón", price: 3.00 },
-                { name: "Pulpo", price: 2.00 },
-                { name: "Papas Fritas", price: 3.00 },
-                { name: "Pasta Dinamita", price: 2.50 },
-                { name: "Pescado", price: 1.00 },
-                { name: "Camarón", price: 2.00 },
-                { name: "Pollo", price: 1.00 },
-                { name: "Cangrejo", price: 1.50 },
-                { name: "Tocineta", price: 1.00 },
-                { name: "Queso Crema", price: 1.00 }
-            ];
-
-            // Lógica de buscador para el MENÚ
-            const searchMenuInput = document.getElementById('searchMenu');
-            if(searchMenuInput) {
-                searchMenuInput.addEventListener('input', function() {
-                    let filter = this.value.toLowerCase();
-                    let categoryWraps = document.querySelectorAll('.menu-block-wrap');
-
-                    categoryWraps.forEach(wrap => {
-                        let blocks = wrap.querySelectorAll('.menu-block');
-                        let hasVisibleBlocks = false;
-
-                        blocks.forEach(block => {
-                            let itemNameEl = block.querySelector('.item-name');
-                            let itemDescEl = block.querySelector('.item-desc');
-                            
-                            let itemNameText = itemNameEl ? itemNameEl.textContent.toLowerCase() : '';
-                            let itemDescText = itemDescEl ? itemDescEl.textContent.toLowerCase() : '';
-
-                            if(itemNameText.includes(filter) || itemDescText.includes(filter)) {
-                                block.style.setProperty('display', 'block', 'important');
-                                hasVisibleBlocks = true;
-                            } else {
-                                block.style.setProperty('display', 'none', 'important');
-                            }
-                        });
-
-                        if(hasVisibleBlocks) {
-                            wrap.style.display = 'block';
-                        } else {
-                            wrap.style.display = 'none';
-                        }
-                    });
-                });
-            }
-
-            const originalDestinoSelect = document.getElementById('destino').cloneNode(true);
-            document.getElementById('searchDestino').addEventListener('input', function() {
-                let filter = this.value.toLowerCase();
-                let currentSelect = document.getElementById('destino');
-                currentSelect.innerHTML = '';
-                
-                currentSelect.appendChild(originalDestinoSelect.options[0].cloneNode(true));
-
-                Array.from(originalDestinoSelect.children).forEach(child => {
-                    if (child.tagName === 'OPTGROUP') {
-                        let newOptgroup = child.cloneNode(false);
-                        let hasOptions = false;
-                        Array.from(child.children).forEach(opt => {
-                            if (opt.text.toLowerCase().includes(filter)) {
-                                newOptgroup.appendChild(opt.cloneNode(true));
-                                hasOptions = true;
-                            }
-                        });
-                        if (hasOptions) currentSelect.appendChild(newOptgroup);
-                    } else if (child.tagName === 'OPTION' && child.index > 0) {
-                        if (child.text.toLowerCase().includes(filter)) {
-                            currentSelect.appendChild(child.cloneNode(true));
-                        }
-                    }
-                });
-                
-                renderInvoice();
-            });
-
-            const promoBtn = document.getElementById('promoBtn');
-            if (promoBtn) {
-                promoBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    let now = new Date();
-                    let day = now.getDay();
-                    
-                    if (day === 3) { 
-                        document.getElementById('section_5').scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                        let promoModal = new bootstrap.Modal(document.getElementById('promoAlertModal'));
-                        promoModal.show();
-                    }
-                });
-            }
-
-            modalElement.addEventListener('show.bs.modal', function () {
-                document.body.classList.add('modal-open');
-                let navbar = document.querySelector('.navbar');
-                if (navbar) {
-                    navbar.style.setProperty('z-index', '10', 'important');
-                }
-            });
-
-            modalElement.addEventListener('hidden.bs.modal', function () {
-                document.body.classList.remove('modal-open');
-                let navbar = document.querySelector('.navbar');
-                if (navbar) {
-                    navbar.style.removeProperty('z-index');
-                }
-            });
-
-            function getCleanText(element) {
-                let clone = element.cloneNode(true);
-                let badges = clone.querySelectorAll('.badge');
-                badges.forEach(b => b.remove());
-                return clone.textContent.trim();
-            }
-
-            function splitIngredients(desc) {
-                let text = desc.replace(/\.$/, ''); 
-                text = text.replace(/topping de cangrejo y aguacate/gi, "topping de cangrejo, topping de aguacate");
-                let parts = text.split(/,|\sy\s/i);
-                return parts.map(p => p.trim()).filter(p => p.length > 0);
-            }
-
-            function updateTotalModal() {
-                let tempTotal = currentItemObj.basePrice;
-                document.querySelectorAll('.extra-checkbox:checked').forEach(cb => {
-                    tempTotal += parseFloat(cb.getAttribute('data-price'));
-                });
-                document.getElementById('modalCurrentTotal').textContent = `$${tempTotal.toFixed(2)}`;
-            }
-
-            function openCustomizationModal(itemData, editIdx = -1) {
-                editingIndex = editIdx;
-                currentItemObj = itemData;
-                
-                document.getElementById('modalItemName').textContent = itemData.originalName;
-                document.getElementById('modalItemPrice').textContent = itemData.basePriceStr;
-                
-                const ingredientsBox = document.getElementById('modalIngredientsList');
-                const extrasBox = document.getElementById('modalExtrasList');
-                const flavorBox = document.getElementById('modalFlavorList');
-                
-                ingredientsBox.innerHTML = ''; 
-                extrasBox.innerHTML = ''; 
-                flavorBox.innerHTML = '';
-
-                // Logica actualizada para bebidas de 1L y 1.5L
-                let isNestea = itemData.originalName.toLowerCase().includes("nestea");
-                let isJugo = itemData.originalName.toLowerCase().includes("jugos naturales");
-                let isRefresco1L = itemData.originalName.toLowerCase().includes("bebidas de 1 litro");
-                let isRefresco15L = itemData.originalName.toLowerCase().includes("bebidas de 1.5 litros");
-
-                if (isNestea || isJugo || isRefresco1L || isRefresco15L) {
-                    document.getElementById('flavorSection').style.display = 'block';
-                    
-                    let flavors = [];
-                    if (isNestea) {
-                        flavors = ['Durazno', 'Limón'];
-                    } else if (isJugo) {
-                        flavors = ['Fresa', 'Parchita', 'Durazno'];
-                    } else if (isRefresco1L || isRefresco15L) {
-                        flavors = ['Coca Cola', 'Naranja', 'Chinoto', 'Uva', 'Frescolita', 'Toronja'];
-                    }
-
-                    let html = '';
-                    flavors.forEach((f, i) => {
-                        let isChecked = (editIdx !== -1 && itemData.flavor === f) || (editIdx === -1 && i === 0);
-                        html += `
-                            <div class="form-check p-2 rounded border border-secondary" style="background-color:#f8f9fa;">
-                                <input class="form-check-input flavor-radio ms-1 me-2 border-secondary" type="radio" name="flavorRadio" value="${f}" id="flavor_${i}" ${isChecked ? 'checked' : ''}>
-                                <label class="form-check-label w-100 text-dark" for="flavor_${i}" style="cursor:pointer;">
-                                    Sabor a ${f}
-                                </label>
-                            </div>
-                        `;
-                    });
-                    flavorBox.innerHTML = html;
-                } else {
-                    document.getElementById('flavorSection').style.display = 'none';
-                }
-
-                if(itemData.itemType === 'food') {
-                    document.getElementById('extrasSection').style.display = 'block';
-
-                    if (itemData.canExclude) {
-                        document.getElementById('exclusionsSection').style.display = 'block';
-                        let ingredients = splitIngredients(itemData.description);
-                        
-                        if(ingredients.length > 0) {
-                            ingredients.shift(); 
-                        }
-
-                        if(ingredients.length > 0) {
-                            ingredients.forEach((ing, index) => {
-                                let loweredIng = ing.toLowerCase();
-                                if(loweredIng.includes("camaron") && loweredIng.includes("tempurizado") || loweredIng.includes("camarones tempurizados")){
-                                    return; 
-                                }
-
-                                let isChecked = (editIdx !== -1 && itemData.excluded.includes(ing));
-
-                                const div = document.createElement('div');
-                                div.className = 'form-check ingredient-item p-2 rounded border border-secondary';
-                                div.innerHTML = `
-                                    <input class="form-check-input ms-1 me-2 exclude-checkbox border-secondary" type="checkbox" value="${ing}" id="ing_${index}" ${isChecked ? 'checked' : ''}>
-                                    <label class="form-check-label w-100 text-dark" for="ing_${index}" style="cursor:pointer;">
-                                        Sin ${ing}
-                                    </label>
-                                `;
-                                ingredientsBox.appendChild(div);
-                            });
-                        } 
-                        
-                        if(ingredientsBox.innerHTML === '') {
-                            ingredientsBox.innerHTML = '<p class="text-dark small">Sin ingredientes adicionales para excluir.</p>';
-                        }
-                    } else {
-                        document.getElementById('exclusionsSection').style.display = 'none';
-                    }
-
-                    adicionalesList.forEach((extra, index) => {
-                        let isChecked = (editIdx !== -1 && itemData.extras.some(e => e.name === extra.name));
-
-                        const div = document.createElement('div');
-                        div.className = 'form-check extra-item p-2 rounded border border-secondary';
-                        div.innerHTML = `
-                            <input class="form-check-input ms-1 me-2 extra-checkbox border-secondary" type="checkbox" value="${extra.name}" data-price="${extra.price}" id="ext_${index}" ${isChecked ? 'checked' : ''}>
-                            <label class="form-check-label w-100 d-flex justify-content-between text-dark" for="ext_${index}" style="cursor:pointer;">
-                                <span>+ ${extra.name}</span>
-                                <span class="fw-bold text-success">+$${extra.price.toFixed(2)}</span>
-                            </label>
-                        `;
-                        extrasBox.appendChild(div);
-                    });
-
-                    document.querySelectorAll('.extra-checkbox').forEach(cb => {
-                        cb.addEventListener('change', updateTotalModal);
-                    });
-
-                } else {
-                    document.getElementById('exclusionsSection').style.display = 'none';
-                    document.getElementById('extrasSection').style.display = 'none';
-                }
-
-                updateTotalModal();
-                bsModal.show();
-            }
-
-            const addButtons = document.querySelectorAll('.add-to-cart-btn');
-            addButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const block = this.closest('.menu-block');
-                    const nameEl = block.querySelector('.item-name');
-                    const priceEl = block.querySelector('.item-price');
-                    const descEl = block.querySelector('.item-desc');
-                    const itemType = this.getAttribute('data-type'); 
-
-                    const blockWrap = this.closest('.menu-block-wrap');
-                    let categoryName = '';
-                    if (blockWrap) {
-                        const h4 = blockWrap.querySelector('h4');
-                        if (h4) categoryName = h4.textContent.trim().toLowerCase();
-                    }
-                    const noExcludeCategories = ['entradas', 'ek combos', 'combinados'];
-                    const canExclude = !noExcludeCategories.includes(categoryName);
-
-                    const name = getCleanText(nameEl);
-                    const priceStr = getCleanText(priceEl);
-                    const priceVal = parseFloat(priceStr.replace('$', ''));
-                    const description = descEl ? getCleanText(descEl) : '';
-
-                    const itemData = {
-                        originalName: name,
-                        basePrice: priceVal,
-                        basePriceStr: priceStr,
-                        description: description,
-                        itemType: itemType,
-                        canExclude: canExclude,
-                        excluded: [],
-                        extras: [],
-                        flavor: null
-                    };
-
-                    openCustomizationModal(itemData, -1);
-                });
-            });
-
-            document.getElementById('confirmAddToCartBtn').addEventListener('click', function() {
-                
-                let selectedFlavorObj = null;
-                if (document.getElementById('flavorSection').style.display !== 'none') {
-                    let selectedFlavor = document.querySelector('.flavor-radio:checked');
-                    if (selectedFlavor) {
-                        selectedFlavorObj = selectedFlavor.value;
-                    }
-                }
-
-                let finalItemName = currentItemObj.originalName;
-                if (selectedFlavorObj) {
-                    finalItemName += " (Sabor: " + selectedFlavorObj + ")";
-                }
-
-                let excluded = [];
-                if (document.getElementById('exclusionsSection').style.display !== 'none') {
-                    document.querySelectorAll('.exclude-checkbox:checked').forEach(cb => {
-                        excluded.push(cb.value);
-                    });
-                }
-
-                let chosenExtras = [];
-                let extrasTotal = 0;
-                document.querySelectorAll('.extra-checkbox:checked').forEach(cb => {
-                    let p = parseFloat(cb.getAttribute('data-price'));
-                    chosenExtras.push({ name: cb.value, price: p });
-                    extrasTotal += p;
-                });
-
-                let finalItemPrice = currentItemObj.basePrice + extrasTotal;
-
-                let cartItem = {
-                    name: finalItemName,
-                    originalName: currentItemObj.originalName,
-                    description: currentItemObj.description,
-                    itemType: currentItemObj.itemType,
-                    canExclude: currentItemObj.canExclude,
-                    basePrice: currentItemObj.basePrice,
-                    basePriceStr: currentItemObj.basePriceStr,
-                    finalPrice: finalItemPrice,
-                    excluded: excluded,
-                    extras: chosenExtras,
-                    flavor: selectedFlavorObj,
-                    quantity: editingIndex !== -1 ? carrito[editingIndex].quantity : 1
-                };
-
-                if (editingIndex === -1) {
-                    carrito.push(cartItem);
-                    lastAddedIndex = carrito.length - 1;
-                } else {
-                    carrito[editingIndex] = cartItem;
-                    lastAddedIndex = editingIndex;
-                }
-
-                document.getElementById('successItemName').textContent = finalItemName;
-                document.getElementById('successItemQty').textContent = carrito[lastAddedIndex].quantity;
-
-                bsModal.hide();
-                renderInvoice();
-                
-                setTimeout(() => {
-                    successModal.show();
-                }, 300);
-            });
-
-            document.getElementById('successIncreaseQty').addEventListener('click', function() {
-                if (lastAddedIndex !== -1) {
-                    carrito[lastAddedIndex].quantity++;
-                    document.getElementById('successItemQty').textContent = carrito[lastAddedIndex].quantity;
-                    renderInvoice();
-                }
-            });
-
-            document.getElementById('successDecreaseQty').addEventListener('click', function() {
-                if (lastAddedIndex !== -1 && carrito[lastAddedIndex].quantity > 1) {
-                    carrito[lastAddedIndex].quantity--;
-                    document.getElementById('successItemQty').textContent = carrito[lastAddedIndex].quantity;
-                    renderInvoice();
-                }
-            });
-
-            document.getElementById('successGoToPayBtn').addEventListener('click', function() {
-                successModal.hide();
-                document.getElementById('section_5').scrollIntoView({ behavior: 'smooth' });
-            });
-
-
-            document.getElementById('destino').addEventListener('change', renderInvoice);
-
-            function renderInvoice() {
-                const list = document.getElementById('invoiceList');
-                const emptyMsg = document.getElementById('emptyCartMsg');
-                const footer = document.getElementById('invoiceFooter');
-                const totalEl = document.getElementById('invoiceTotal');
-                const detailInput = document.getElementById('detallePedidoInput');
-
-                list.innerHTML = ''; 
-                let total = 0;
-                let textForForm = ""; 
-
-                if (carrito.length === 0) {
-                    emptyMsg.style.display = 'block';
-                    footer.style.display = 'none';
-                    detailInput.value = '';
-                    return;
-                }
-
-                emptyMsg.style.display = 'none';
-                footer.style.display = 'flex';
-
-                carrito.forEach((item, index) => {
-                    let subtotalItem = item.finalPrice * item.quantity;
-                    total += subtotalItem;
-                    
-                    let exText = item.excluded.length > 0 
-                        ? `<div class="text-danger small ms-5">↳ <em>Sin: ${item.excluded.join(', ')}</em></div>` 
-                        : '';
-                    
-                    let extText = '';
-                    item.extras.forEach(ext => {
-                        extText += `<div class="text-success small ms-5 fw-bold">↳ + ${ext.name} (+$${ext.price.toFixed(2)})</div>`;
-                    });
-                    
-                    textForForm += `- ${item.quantity}x ${item.name} ` + 
-                                   (item.excluded.length > 0 ? `[Sin: ${item.excluded.join(', ')}] ` : '') + 
-                                   (item.extras.length > 0 ? `[Extras: ${item.extras.map(e => e.name).join(', ')}] ` : '') + 
-                                   `=> $${subtotalItem.toFixed(2)}\n`;
-
-                    const li = document.createElement('li');
-                    li.className = 'invoice-item d-flex justify-content-between align-items-start';
-                    li.innerHTML = `
-                        <div class="w-100">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <button type="button" class="btn btn-sm btn-outline-primary px-2 py-0 me-2 edit-item-btn" data-index="${index}" title="Editar Extras/Ingredientes"><i class="bi-pencil"></i> ✏️</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary px-2 py-0 me-2 decrease-qty-btn" data-index="${index}">-</button>
-                                    <span class="fw-bold me-2" style="min-width: 15px; text-align: center;">${item.quantity}</span>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary px-2 py-0 me-3 increase-qty-btn" data-index="${index}">+</button>
-                                    <strong>${item.name}</strong>
-                                </div>
-                                <span class="text-dark fw-bold fs-6">$${subtotalItem.toFixed(2)}</span>
-                            </div>
-                            ${exText}
-                            ${extText}
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2 ms-3 mt-1 remove-item-btn" data-index="${index}">x</button>
-                    `;
-                    list.appendChild(li);
-                });
-
-                document.querySelectorAll('.edit-item-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const idx = parseInt(this.getAttribute('data-index'));
-                        const itemData = carrito[idx];
-                        openCustomizationModal(itemData, idx);
-                    });
-                });
-
-                document.querySelectorAll('.increase-qty-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const idx = parseInt(this.getAttribute('data-index'));
-                        carrito[idx].quantity++;
-                        
-                        if(idx === lastAddedIndex && document.getElementById('successModal').classList.contains('show')) {
-                            document.getElementById('successItemQty').textContent = carrito[idx].quantity;
-                        }
-                        
-                        renderInvoice();
-                    });
-                });
-
-                document.querySelectorAll('.decrease-qty-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const idx = parseInt(this.getAttribute('data-index'));
-                        if (carrito[idx].quantity > 1) {
-                            carrito[idx].quantity--;
-                            
-                            if(idx === lastAddedIndex && document.getElementById('successModal').classList.contains('show')) {
-                                document.getElementById('successItemQty').textContent = carrito[idx].quantity;
-                            }
-                            
-                            renderInvoice();
-                        }
-                    });
-                });
-
-                let destSelect = document.getElementById('destino');
-                let deliveryFee = 0;
-                
-                if (destSelect.selectedIndex > 0 && destSelect.options[destSelect.selectedIndex].style.display !== 'none') {
-                    deliveryFee = parseFloat(destSelect.value);
-                    let destText = destSelect.options[destSelect.selectedIndex].text;
-                    
-                    let deliveryRow = document.getElementById('deliveryRow');
-                    if (deliveryRow) {
-                        deliveryRow.style.setProperty('display', 'flex', 'important');
-                        document.getElementById('deliveryCost').textContent = `+$${deliveryFee.toFixed(2)}`;
-                    }
-                    
-                    if(deliveryFee > 0) {
-                        textForForm += `\n- Delivery (${destText})`;
-                    } else {
-                        textForForm += `\n- Retiro en Restaurante`;
-                    }
-                } else {
-                    let deliveryRow = document.getElementById('deliveryRow');
-                    if (deliveryRow) deliveryRow.style.setProperty('display', 'none', 'important');
-                }
-
-                total += deliveryFee;
-
-                totalEl.textContent = `$${total.toFixed(2)}`;
-                textForForm += `\n\nTOTAL A PAGAR: $${total.toFixed(2)}`;
-                detailInput.value = textForForm;
-
-                document.querySelectorAll('.remove-item-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const idx = parseInt(this.getAttribute('data-index'));
-                        carrito.splice(idx, 1);
-                        lastAddedIndex = -1; 
-                        renderInvoice(); 
-                    });
-                });
-            }
-
-            document.getElementById('pedidoForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                if(carrito.length === 0) {
-                    alert("Tu carrito está vacío. Por favor, agrega algunos productos antes de enviar el pedido.");
-                    return;
-                }
-
-                let nombre = document.getElementById('name').value;
-                let telefono = document.getElementById('phone').value;
-                let destinoSelect = document.getElementById('destino');
-                
-                if(destinoSelect.selectedIndex <= 0) {
-                    alert("Por favor selecciona una zona de entrega válida de la lista.");
-                    return;
-                }
-                
-                let zonaText = destinoSelect.options[destinoSelect.selectedIndex].text;
-                let metodoPago = document.getElementById('metodoPago').value;
-                let detallePedido = document.getElementById('detallePedidoInput').value;
-                
-                let sugerencias = document.getElementById('sugerenciasPedido').value;
-
-                let mensaje = `*NUEVO PEDIDO - EK SUSHI*\n\n`;
-                mensaje += `👤 *Cliente:* ${nombre}\n`;
-                mensaje += `📞 *Teléfono:* ${telefono}\n`;
-                mensaje += `📍 *Zona/Método:* ${zonaText}\n`;
-                mensaje += `💳 *Método de Pago:* ${metodoPago}\n\n`;
-                mensaje += `🍣 *DETALLE DEL PEDIDO:*\n${detallePedido}\n`;
-                
-                if (sugerencias.trim() !== '') {
-                    mensaje += `\n📝 *Notas o Sugerencias:* ${sugerencias}`;
-                }
-
-                let mensajeCodificado = encodeURIComponent(mensaje);
-                let numeroWA = "584148862565";
-                
-                window.open(`https://wa.me/${numeroWA}?text=${mensajeCodificado}`, '_blank');
-            });
-        });
-    </script>
 </body>
 
 </html>
